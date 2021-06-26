@@ -2,8 +2,8 @@ module controller(input clk,rst,Zero,input[5:0]opcode,func,output reg Reg_Write,
 parameter [5:0] 
         RT=6'h0,Addi=6'h8,Slti=6'ha,Lw=6'h23,Sw=6'h2b,J=6'h2,Jal=6'h3,Jr=6'h8,Beq=6'h4,Bne=6'h5 ;
 reg [1:0]ALUop;
-always@(posedge clk,posedge rst,opcode,Zero)begin
-    Reg_Write=0;memWrite=0;memRead=0;RegDst=0;ALUsrc=0;memToReg=0;branch=0;Jmp=0;decide_br=Zero;ALUop=2'b00;link31=0;writePC=0;Jumpinp=0;
+always@(posedge clk,posedge rst,opcode,func)begin
+    Reg_Write=0;memWrite=0;memRead=0;RegDst=0;ALUsrc=0;memToReg=0;branch=0;Jmp=0;decide_br=0;ALUop=2'b00;link31=0;writePC=0;Jumpinp=0;
     ALUop=2'b00;
     case(opcode)
     RT:begin
